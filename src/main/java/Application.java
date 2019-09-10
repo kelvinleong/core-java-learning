@@ -1,4 +1,5 @@
 import algorithms.Graph;
+import algorithms.MergeStrings;
 import designPattern.behavioral.composite.*;
 
 public class Application {
@@ -18,7 +19,13 @@ public class Application {
         System.out.println("the value is : " + exp.calculate());
     }
 
+    private static void mergeStrings() {
+        MergeStrings m = new MergeStrings();
+        String r = m.merge(new String[]{"apple", "iphonex"});
+        System.out.println("Result:: " + r);
+    }
+
     public static void main(String[] args) {
-        composite();
+        mergeStrings();
     }
 }
