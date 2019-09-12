@@ -1,4 +1,4 @@
-package designPattern.behavioral.composite;
+package designPattern.structural.composite;
 
 public class Constants extends UnaryExpression{
     public Constants(Double value) {

@@ -1,4 +1,4 @@
-package designPattern.behavioral.composite;
+package designPattern.structural.composite;
 
 public abstract class UnaryExpression implements Expression {
     public Double value;

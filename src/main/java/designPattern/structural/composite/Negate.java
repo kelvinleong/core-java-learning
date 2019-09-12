@@ -1,4 +1,4 @@
-package designPattern.behavioral.composite;
+package designPattern.structural.composite;
 
 public class Negate extends UnaryExpression {
     public Negate(Double value) {

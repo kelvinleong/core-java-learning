@@ -1,4 +1,4 @@
-package designPattern.behavioral.composite;
+package designPattern.structural.composite;
 
 public abstract class BinaryExpression implements Expression {
     protected Expression left;

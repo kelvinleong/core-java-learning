@@ -1,6 +1,7 @@
 import algorithms.Graph;
+import algorithms.MergeSort;
 import algorithms.MergeStrings;
-import designPattern.behavioral.composite.*;
+import designPattern.structural.composite.*;
 
 public class Application {
     private static void graph() {
@@ -25,7 +26,13 @@ public class Application {
         System.out.println("Result:: " + r);
     }
 
+    private static void mergeSort() {
+        MergeSort<Double> m = new MergeSort<>(new Double[]{1.2, 8.8, 9.9, 9.2, 1.2});
+        m.mergeSort();
+        m.showSortedResult();
+    }
+
     public static void main(String[] args) {
-        mergeStrings();
+        mergeSort();
     }
 }
