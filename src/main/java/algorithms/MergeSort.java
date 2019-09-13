@@ -1,9 +1,10 @@
 package algorithms;
 
-public class MergeSort<T extends Number & Comparable<T>> {
+public class MergeSort<T extends Number & Comparable<T>> extends Sort<T> {
     private T[] list;
 
     public MergeSort(T[] list) {
+        super(list);
         this.list = list;
     }
 
@@ -56,11 +57,5 @@ public class MergeSort<T extends Number & Comparable<T>> {
 
     public void mergeSort() {
         sort(list, 0, list.length - 1);
-    }
-
-    public void showSortedResult() {
-        for(T t: list) {
-            System.out.print(" " + t);
-        }
     }
 }

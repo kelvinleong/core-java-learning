@@ -1,4 +1,5 @@
 import algorithms.Graph;
+import algorithms.HeapSort;
 import algorithms.MergeSort;
 import algorithms.MergeStrings;
 import designPattern.structural.composite.*;
@@ -29,10 +30,16 @@ public class Application {
     private static void mergeSort() {
         MergeSort<Double> m = new MergeSort<>(new Double[]{1.2, 8.8, 9.9, 9.2, 1.2});
         m.mergeSort();
-        m.showSortedResult();
+        m.showResult();
+    }
+
+    private static void heapSort() {
+        HeapSort<Double> m = new HeapSort<>(new Double[]{1.2, 8.8, 9.9, 9.2, 1.2});
+        m.sort();
+        m.showResult();
     }
 
     public static void main(String[] args) {
-        mergeSort();
+        heapSort();
     }
 }
