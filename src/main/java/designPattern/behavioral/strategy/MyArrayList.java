@@ -29,7 +29,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public T get(int i) {
-        if (i > array.length) {
+        if (i > size - 1) {
             throw new ArrayIndexOutOfBoundsException("out of index");
         }
 
@@ -38,7 +38,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public Boolean remove(int i) {
-        if (i > array.length) {
+        if (i > size - 1) {
             throw new ArrayIndexOutOfBoundsException("out of index");
         }
 
