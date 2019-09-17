@@ -15,7 +15,7 @@ public class SortingTest {
 
     @Test
     public void shouldHeapSorted() {
-        HeapSort<Double> m = new HeapSort<>(new Double[]{1.2, 8.8, 9.9, 9.2, 1.2});
+        HeapSort<Integer> m = new HeapSort<>(new Integer[]{5, 7, 6, 4, 3, 9, 8});
         m.sort();
         ascSortingCheck(m.getSorted());
     }

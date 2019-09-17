@@ -25,9 +25,9 @@ public class HeapSort<T extends Number & Comparable<T>> extends Sort<T> {
         int right = 2 * i + 2;
 
         int largest = i;
-        if (left < l && list[left].compareTo(list[i]) > 0) largest = left;
+        if (left < l && list[left].compareTo(list[largest]) > 0) largest = left;
 
-        if (right < l && list[right].compareTo(list[i]) > 0) largest = right;
+        if (right < l && list[right].compareTo(list[largest]) > 0) largest = right;
 
         if (largest != i) {
             swap(i, largest);
