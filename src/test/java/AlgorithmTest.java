@@ -74,4 +74,22 @@ public class AlgorithmTest {
         assertEquals(6, dp.pop());
         assertEquals(1, dp.pop());
     }
+
+    @Test
+    public void should_ConstructSTAndQuery_when_BuildSegmentTree() {
+        SegmentTree<Integer> st = new SegmentTree<>(new Integer[]{1, 3, 2, 7, 9, 11});
+        st.buildSegmentTree();
+        Integer result = st.query(1, 5);
+        assertEquals(result, 2);
+
+        // update 1 -> 5 at index 0
+        st.update(0, 5);
+        result = st.query(0, 1);
+        assertEquals(result, 3);
+
+        // update 2 -> 8 at index 2
+        st.update(2, 8);
+        result = st.query(2, 5);
+        assertEquals(result, 7);
+    }
 }
