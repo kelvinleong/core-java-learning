@@ -1,5 +1,6 @@
 import algorithms.Graph;
 import algorithms.KadaneAlgorithm;
+import algorithms.RollingHash;
 import dataStructure.*;
 
 import org.junit.jupiter.api.Test;
@@ -91,5 +92,26 @@ public class AlgorithmTest {
         st.update(2, 8);
         result = st.query(2, 5);
         assertEquals(result, 7);
+    }
+
+    @Test
+    public void should_MatchSubString_when_UsingRollingHash() {
+        RollingHash rh = new RollingHash();
+        int idx  = rh.repeatedStringMatch("rollinginthedip", "dip");
+        assertTrue(idx > 0);
+    }
+
+    @Test
+    public void should_MatchRollingSubString_when_UsingRollingHash() {
+        RollingHash rh = new RollingHash();
+        int idx  = rh.repeatedStringMatch("cranberries", "scran");
+        assertTrue(idx > 0);
+    }
+
+    @Test
+    public void should_FailedMatchSubString_when_UsingRollingHash() {
+        RollingHash rh = new RollingHash();
+        int idx  = rh.repeatedStringMatch("nonthingleft", "some");
+        assertTrue(idx == -1);
     }
 }
