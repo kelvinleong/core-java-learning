@@ -1,8 +1,8 @@
 package tdd;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.stream.Collectors;
+
 
 public class Greeting {
     public String greet(String... names) {
@@ -11,23 +11,47 @@ public class Greeting {
         if (names == null) {
             return String.format(format, "my friend");
         } else {
-            String pattern =  "[A-Z\\s]+";
+            String upperCasePattern =  "[A-Z\\s]+";
 
             if (names.length < 2) {
-                if (names[0].matches(pattern)) {
+                if (names[0].matches(upperCasePattern)) {
                     format = "HELLO %s!";
                 }
                 return String.format(format, names[0]);
             } else {
-                List<String> temp = new ArrayList<>();
-                for(int i = 0; i < names.length - 1; ++i) {
-                    temp.add(names[i]);
-                }
+                var lowercaseOrWithSpecialCharNames = Arrays.stream(names)
+                        .map(s -> {
+                            if (s.contains("\"")) {
+                                return new String[]{s.replace("\"", "")};
+                            } else {
+                                return s.split(", ");
+                            }
+                        })
+                        .flatMap(Arrays::stream)
+                        .filter(s -> !s.matches(upperCasePattern))
+                        .collect(Collectors.toList());
 
-                String namesStr = String.join(", ", temp);
-                namesStr = namesStr + " and " + names[names.length - 1];
+                String lastElement = lowercaseOrWithSpecialCharNames.get(lowercaseOrWithSpecialCharNames.size() - 1);
+                String lowercaseOrWithSpecialCharNamesStr = lowercaseOrWithSpecialCharNames
+                        .subList(0, lowercaseOrWithSpecialCharNames.size() - 1)
+                        .stream()
+                        .reduce((s1, s2) -> s1 + ", " + s2)
+                        .map(s -> {
+                            if (lowercaseOrWithSpecialCharNames.size() > 2) {
+                                return s.concat(", and ").concat(lastElement);
+                            } else {
+                                return s.concat(" and ").concat(lastElement);
+                            }
+                        })
+                        .orElse("");
 
-                return String.format(format, namesStr);
+                String uppercaseNamesStr = Arrays.stream(names)
+                        .filter(s -> s.matches(upperCasePattern))
+                        .reduce((s1, s2) -> s1 + s2)
+                        .map(s -> " AND HELLO " + s + "!")
+                        .orElse("");
+
+                return String.format(format, lowercaseOrWithSpecialCharNamesStr) + uppercaseNamesStr;
             }
         }
     }
