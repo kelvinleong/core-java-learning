@@ -1,5 +1,8 @@
 package dataStructure;
 
+/***
+ *   find the min value given an arrange in the array
+ */
 public class SegmentTree<T extends Number & Comparable<T>> {
     private final T[] array;
     private T[] segmentTree;
