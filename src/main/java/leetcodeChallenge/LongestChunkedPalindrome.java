@@ -1,4 +1,4 @@
-package leetcodeChanllenge;
+package leetcodeChallenge;
 
 public class LongestChunkedPalindrome {
     public int count(String s) {

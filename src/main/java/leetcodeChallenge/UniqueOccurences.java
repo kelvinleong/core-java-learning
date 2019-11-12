@@ -1,4 +1,4 @@
-package leetcodeChanllenge;
+package leetcodeChallenge;
 
 import java.util.HashMap;
 import java.util.HashSet;
