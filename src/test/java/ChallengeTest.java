@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ChanllengeTest {
+public class ChallengeTest {
     @Test
     public void should_CountBallons_when_RunBallonProblems() {
         BallonProblems bp = new BallonProblems();
