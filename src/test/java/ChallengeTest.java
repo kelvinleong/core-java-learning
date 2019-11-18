@@ -1,5 +1,7 @@
 import leetcodeChallenge.*;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -77,5 +79,71 @@ public class ChallengeTest {
         lruCache.put(1, 2);
         lruCache.get(1);
         assertEquals(lruCache.get(2), 6);
+    }
+
+    @Test
+    public void should_passTwitterExample1_when_RunTwitter() {
+        Twitter twitter = new Twitter();
+
+        // User 1 posts a new tweet (id = 5).
+        twitter.postTweet(1, 5);
+
+        // User 1's news feed should return a list with 1 tweet id -> [5].
+        var result = twitter.getNewsFeed(1);
+        assertEquals(1, result.size());
+        assertEquals(5, result.get(0));
+
+        // User 1 follows user 2.
+        twitter.follow(1, 2);
+
+        // User 2 posts a new tweet (id = 6).
+        twitter.postTweet(2, 6);
+
+        // User 1's news feed should return a list with 2 tweet ids -> [6, 5].
+        // Tweet id 6 should precede tweet id 5 because it is posted after tweet id 5.
+        result = twitter.getNewsFeed(1);
+        assertEquals(2, result.size());
+        assertEquals(6, result.get(0));
+        assertEquals(5, result.get(1));
+
+        // User 1 unfollows user 2.
+        twitter.unfollow(1, 2);
+
+        // User 1's news feed should return a list with 1 tweet id -> [5],
+        // since user 1 is no longer following user 2.
+        result = twitter.getNewsFeed(1);
+        assertEquals(1, result.size());
+        assertEquals(5, result.get(0));
+    }
+
+    @Test
+    public void should_passTwitterExample2_when_RunTwitter() {
+        Twitter twitter = new Twitter();
+
+        twitter.postTweet(2, 5);
+        twitter.postTweet(1, 6);
+        twitter.postTweet(2, 7);
+        twitter.postTweet(1, 8);
+        twitter.follow(1, 2);
+
+        var result = twitter.getNewsFeed(1);
+        assertEquals(4, result.size());
+        assertEquals(8, result.get(0));
+        assertEquals(7, result.get(1));
+        assertEquals(6, result.get(2));
+        assertEquals(5, result.get(3));
+    }
+
+    @Test
+    public void should_passTwitterExample3_when_RunTwitter() {
+        Twitter twitter = new Twitter();
+
+        twitter.postTweet(2, 5);
+        twitter.postTweet(2, 7);
+
+        var result = twitter.getNewsFeed(2);
+        assertEquals(2, result.size());
+        assertEquals(7, result.get(0));
+        assertEquals(5, result.get(1));
     }
 }
