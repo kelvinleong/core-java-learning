@@ -1,8 +1,7 @@
 import leetcodeChallenge.*;
 import org.junit.Test;
 
-import java.util.Arrays;
-
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ChallengeTest {
@@ -145,5 +144,28 @@ public class ChallengeTest {
         assertEquals(2, result.size());
         assertEquals(7, result.get(0));
         assertEquals(5, result.get(1));
+    }
+
+    @Test
+    public void should_passRotateExample1_when_RunRotate() {
+        RotateRight.ListNode n1 = new RotateRight.ListNode(0);
+        RotateRight.ListNode n2 = new RotateRight.ListNode(1);
+        RotateRight.ListNode n3 = new RotateRight.ListNode(2);
+        n1.setNext(n2);
+        n2.setNext(n3);
+        n3.setNext(null);
+
+        RotateRight rr = new RotateRight();
+        var r = rr.rotateRight(n1, 4);
+        var head = r;
+        var count = 0;
+        int[] expected = {2, 0, 1};
+
+        assertTrue(head != null);
+        while(head != null) {
+            assertEquals(expected[count], head.getVal());
+            head = head.getNext();
+            ++count;
+        }
     }
 }
