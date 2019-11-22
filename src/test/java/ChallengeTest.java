@@ -169,4 +169,32 @@ public class ChallengeTest {
             ++count;
         }
     }
+
+    @Test
+    public void should_passRemoveDigits_when_RunRemoveDigits() {
+        RemoveDigits rd = new RemoveDigits();
+        var result = rd.solution("111111", 2);
+        assertEquals("1111", result);
+
+        result = rd.solution("1234567890", 9);
+        assertEquals("0", result);
+
+        result = rd.solution("10200", 2);
+        assertEquals("0", result);
+
+        result = rd.solution("1432219", 3);
+        assertEquals("1219", result);
+
+        result = rd.solution("112", 1);
+        assertEquals("11", result);
+
+        result = rd.solution("1333795118424297109718941273592510556281286476952957142060176679385689990596069563482833814436779303673374352725999828678439", 111);
+        assertEquals("222439", result);
+
+        result = rd.solution("9999999999991", 8);
+        assertEquals("99991", result);
+
+        result = rd.solution("222222222222222222222210", 12);
+        assertEquals("222222222210", result);
+    }
 }
