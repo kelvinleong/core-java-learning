@@ -197,4 +197,23 @@ public class ChallengeTest {
         result = rd.solution("222222222222222222222210", 12);
         assertEquals("222222222210", result);
     }
+
+    @Test
+    public void should_decodeString_when_RunDecodeString() {
+        DecodeString ds = new DecodeString();
+        var result = ds.decode("3[a2[c]]");
+        assertEquals("accaccacc", result);
+
+        result = ds.decode("3[a]2[bc]");
+        assertEquals("aaabcbc", result);
+
+        result = ds.decode("2[abc]3[cd]ef");
+        assertEquals("abcabccdcdcdef", result);
+
+        result = ds.decode("abcdef");
+        assertEquals("abcdef", result);
+
+        result = ds.decode("3[z]2[2[y]pq4[2[jk]e1[f]]]ef");
+        assertEquals("zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef", result);
+    }
 }
