@@ -1,3 +1,4 @@
+import algorithms.EightQueens;
 import leetcodeChallenge.*;
 import org.junit.Test;
 
@@ -215,5 +216,12 @@ public class ChallengeTest {
 
         result = ds.decode("3[z]2[2[y]pq4[2[jk]e1[f]]]ef");
         assertEquals("zzzyypqjkjkefjkjkefjkjkefjkjkefyypqjkjkefjkjkefjkjkefjkjkefef", result);
+    }
+
+    @Test
+    public void should_getSolution_when_RunEightQueensBT() {
+        EightQueens eightQueens = new EightQueens();
+        Boolean result = eightQueens.solve();
+        assertEquals(true, result);
     }
 }
