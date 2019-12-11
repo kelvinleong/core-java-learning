@@ -6,20 +6,13 @@ import java.util.List;
 
 public class CombinationSum {
     private void backTrack(int[] array, int target, int curIdx, List<Integer> s, List<List<Integer>> rs) {
-        int remain = target - array[curIdx];
-
-        for (int i = curIdx; i < array.length; ++i) {
-            if (remain < 0) {
-                s.clear();
-                return;
-            } else if (remain == 0) {
+        if (target < 0) return;
+        else if (target == 0) rs.add(new ArrayList<>(s));
+        else {
+            for (int i = curIdx; i < array.length; ++i) {
                 s.add(array[i]);
-                rs.add(new ArrayList<>(s));
-                s.clear();
-                return;
-            } else {
-                s.add(array[i]);
-                backTrack(array, remain, i, s, rs);
+                backTrack(array, target - array[i], i, s, rs);
+                s.remove(s.size() - 1);
             }
         }
     }
