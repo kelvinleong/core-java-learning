@@ -224,4 +224,10 @@ public class ChallengeTest {
         Boolean result = eightQueens.solve();
         assertEquals(true, result);
     }
+
+    @Test
+    public void should_pass_when_RunCombinationSum() {
+        CombinationSum combinationSum = new CombinationSum();
+        combinationSum.solve(new int[]{2, 3, 5}, 10);
+    }
 }
