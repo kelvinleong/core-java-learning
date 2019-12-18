@@ -10,7 +10,7 @@ public class BinaryTree {
         TreeNode left;
         TreeNode right;
         Integer val;
-        public TreeNode(int val) {
+        TreeNode(int val) {
             this.val = val;
         }
     }
@@ -30,23 +30,36 @@ public class BinaryTree {
         }
     }
 
-    /**
-     *   Level Order Traverse
-     *   #1 Recursive way
-     */
-    public void recursiveTraverse(TreeNode root) {
-        List<Integer> ins = new ArrayList<>();
-        int height = height(root);
-        for (int i = 1; i <= height; ++i) {
-            levelTraverse(root, 1, ins);
+    private List<Integer> trimEndingNull(List<Integer> l) {
+        for (int i = l.size() - 1; i > 0; --i) {
+           if (l.get(i) == null) {
+               l.remove(i);
+           } else {
+               break;
+           }
         }
+
+        return l;
     }
 
     /**
      *   Level Order Traverse
-     *   #1 FIFO (using a queue) way
+     *   #1 Recursive way
      */
-    public void fifoTraverse(TreeNode root) {
+    public List<Integer> recursiveTraverse(TreeNode root) {
+        List<Integer> tree = new ArrayList<>();
+        int height = height(root);
+        for (int i = 1; i <= height; ++i) {
+            levelTraverse(root, i, tree);
+        }
+        return trimEndingNull(tree);
+    }
+
+    /**
+     *   Level Order Traverse
+     *   #2 FIFO (using a queue) way
+     */
+    public List<Integer> fifoTraverse(TreeNode root) {
         int height = height(root);
         int maxNoOfNodes = (int) Math.pow(2, height) - 1;
         List<Integer> tree = new ArrayList<>();
@@ -54,20 +67,36 @@ public class BinaryTree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode head = q.poll();
-            tree.add(head == null ? null : head.val);
             if (tree.size() < maxNoOfNodes) {
+                tree.add(head == null ? null : head.val);
                 q.add(head == null ? null : head.left);
                 q.add(head == null ? null : head.right);
             }
         }
+
+        return trimEndingNull(tree);
     }
 
-    public void initTree(List<Integer> l) {
+    public TreeNode initTree(List<Integer> l) {
         TreeNode root = new TreeNode(l.get(0));
-        TreeNode head = root;
-        for (int i = 0; i <= l.size()/ 2 - 1; ++i) {
-            head.left = new TreeNode(l.get(2 * i));
-            head.right = new TreeNode(l.get(2 * i + 1));
+        Deque<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        for (int i = 0; i <= (l.size() - 1)/ 2; ++i) {
+            var head = q.poll();
+            if (head != null) {
+                if (2 * i + 1 < l.size()) {
+                    head.left = l.get(2 * i + 1) == null ? null : new TreeNode(l.get(2 * i + 1));
+                }
+
+                if (2 * i + 2 < l.size()) {
+                    head.right = l.get(2 * i + 2) == null ? null : new TreeNode(l.get(2 * i + 2));
+                }
+
+                q.add(head.left);
+                q.add(head.right);
+            }
         }
+
+        return root;
     }
 }

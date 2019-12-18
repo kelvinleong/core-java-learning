@@ -1,3 +1,4 @@
+import algorithms.BinaryTree;
 import algorithms.Graph;
 import algorithms.KadaneAlgorithm;
 import algorithms.RollingHash;
@@ -5,6 +6,7 @@ import dataStructure.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -113,5 +115,29 @@ public class AlgorithmTest {
         RollingHash rh = new RollingHash();
         int idx  = rh.repeatedStringMatch("nonthingleft", "some");
         assertTrue(idx == -1);
+    }
+
+    @Test
+    public void should_RecursivelyOrderLevelTraverse_when_UsingRecursiveWay() {
+        BinaryTree bt = new BinaryTree();
+        var tree = bt.initTree(Arrays.asList(1, 2, 5));
+        var treeArray = bt.recursiveTraverse(tree);
+        assertEquals(3, treeArray.size());
+
+        tree = bt.initTree(Arrays.asList(1, 2, null, 3, 4, null, null, 5));
+        treeArray = bt.recursiveTraverse(tree);
+        assertEquals(8, treeArray.size());
+    }
+
+    @Test
+    public void should_OrderLevelTraverseByQueue_when_UsingRecursiveWay() {
+        BinaryTree bt = new BinaryTree();
+        var tree = bt.initTree(Arrays.asList(1, 2, 5));
+        var treeArray = bt.fifoTraverse(tree);
+        assertEquals(3, treeArray.size());
+
+        tree = bt.initTree(Arrays.asList(1, 2, null, 3, 4, null, null, 5));
+        treeArray = bt.recursiveTraverse(tree);
+        assertEquals(8, treeArray.size());
     }
 }
