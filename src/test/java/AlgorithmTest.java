@@ -1,7 +1,4 @@
-import algorithms.BinaryTree;
-import algorithms.Graph;
-import algorithms.KadaneAlgorithm;
-import algorithms.RollingHash;
+import algorithms.*;
 import dataStructure.*;
 
 import org.junit.jupiter.api.Test;
@@ -9,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AlgorithmTest {
     @Test
@@ -33,7 +29,7 @@ public class AlgorithmTest {
     }
 
     @Test
-    public void shoud_PushAndPopValue_when_RunDinnerPlates() {
+    public void should_PushAndPopValue_when_RunDinnerPlates() {
         DinnerPlates dp = new DinnerPlates(2);
         dp.push(1);
         dp.push(2);
@@ -139,5 +135,35 @@ public class AlgorithmTest {
         tree = bt.initTree(Arrays.asList(1, 2, null, 3, 4, null, null, 5));
         treeArray = bt.recursiveTraverse(tree);
         assertEquals(8, treeArray.size());
+    }
+
+    @Test
+    public void should_getTrue_when_RunIsPowerOfTwo() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+        Boolean r = commonAlgoUtils.isPowerOfTwo(2);
+        assertTrue(r);
+
+        r = commonAlgoUtils.isPowerOfTwo(4);
+        assertTrue(r);
+
+        r = commonAlgoUtils.isPowerOfTwo(8);
+        assertTrue(r);
+
+        r = commonAlgoUtils.isPowerOfTwo(16);
+        assertTrue(r);
+    }
+
+    @Test
+    public void should_getFalse_when_RunIsPowerOfTwo() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+
+        var r = commonAlgoUtils.isPowerOfTwo(1);
+        assertFalse(r);
+
+        r = commonAlgoUtils.isPowerOfTwo(5);
+        assertFalse(r);
+
+        r = commonAlgoUtils.isPowerOfTwo(10);
+        assertFalse(r);
     }
 }
