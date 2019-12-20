@@ -44,15 +44,15 @@ public class Agoda {
     }
 
     /**
-     *   find two odd occurrence
+     *   find two odd occurrence while the remained occurs even times
      */
-    public List<Integer> findTwoOddOccurence(List<Integer> list) {
+    public List<Integer> findTwoOddOccurrence(List<Integer> list) {
         int xor = list.get(0);
         for (int i = 1; i < list.size(); ++i) {
             xor ^= list.get(i);
         }
 
-        int set_bit_no = xor & ~(xor - 1);
+        int set_bit_no = xor & -xor;
         int x = 0, y = 0;
         for (int i = 0; i < list.size(); ++i) {
             if ((list.get(i) & set_bit_no) > 0) {

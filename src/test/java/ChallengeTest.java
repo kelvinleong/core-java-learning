@@ -2,7 +2,6 @@ import algorithms.EightQueens;
 import leetcodeChallenge.*;
 import org.junit.Test;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

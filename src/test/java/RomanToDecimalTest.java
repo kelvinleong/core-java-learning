@@ -6,7 +6,6 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-
 public class RomanToDecimalTest {
     private static Map<String, BigDecimal> symbolValues;
     static {
