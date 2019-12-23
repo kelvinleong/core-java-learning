@@ -26,7 +26,7 @@ public class KnapsackProblem {
 
     /**
      *   This is the dynamic programming way to solve the knapsack problem
-     *   This algorithm has a time complexity of O(n)
+     *   This algorithm has a time complexity of O(n^2)
      */
     public int knapsackUsingDp(int[] values, int[] weights, int w) {
         int[][] dp = new int[values.length + 1][w + 1];
