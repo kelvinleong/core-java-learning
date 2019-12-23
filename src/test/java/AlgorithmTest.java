@@ -166,4 +166,22 @@ public class AlgorithmTest {
         r = commonAlgoUtils.isPowerOfTwo(10);
         assertFalse(r);
     }
+
+    @Test
+    public void should_getFourteen_when_RunKnapsack() {
+        int[] values = {5, 9 , 3};
+        int[] weights = {2, 3, 9};
+        KnapsackProblem kp = new KnapsackProblem();
+        var max = kp.knapsack(values, weights, 12, weights.length - 1);
+        assertEquals(14, max);
+    }
+
+    @Test
+    public void should_getFourteen_when_RunKnapsackDp() {
+        int[] values = {5, 9 , 3};
+        int[] weights = {2, 3, 9};
+        KnapsackProblem kp = new KnapsackProblem();
+        var max = kp.knapsackUsingDp(values, weights, 12);
+        assertEquals(14, max);
+    }
 }
