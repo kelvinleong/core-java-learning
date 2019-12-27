@@ -1,4 +1,4 @@
-package leetcodeChallenge;
+package interviews;
 
 public class Melco {
     private int min(int a, int b) {

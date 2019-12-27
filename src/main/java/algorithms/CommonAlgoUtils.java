@@ -10,4 +10,15 @@ public class CommonAlgoUtils {
     public int getRightMostSetBit(int num) {
         return num & -num;
     }
+
+    /**
+     *
+     * @param nums (all the elements in nums occur even times and only one element occurs odd times
+     * @return the only element occur odd times
+     */
+    public int checkOddOccurrence(int[] nums) {
+        int xor = nums[0];
+        for(int num: nums) xor ^= num;
+        return xor;
+    }
 }
