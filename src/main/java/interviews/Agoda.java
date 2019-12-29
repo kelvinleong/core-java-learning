@@ -54,11 +54,11 @@ public class Agoda {
 
         int set_bit_no = xor & -xor;
         int x = 0, y = 0;
-        for (int i = 0; i < list.size(); ++i) {
-            if ((list.get(i) & set_bit_no) > 0) {
-                x ^= list.get(i);
+        for (Integer val : list) {
+            if ((val & set_bit_no) > 0) {
+                x ^= val;
             } else {
-                y ^= list.get(i);
+                y ^= val;
             }
         }
 
