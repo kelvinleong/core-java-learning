@@ -1,0 +1,67 @@
+
+Fibonacci
+
+f(n) = f(n - 1) + f(n -2)
+
+int fib(n) {
+	if (n == 0) {
+		return 0;
+	} else if (n == 1) {ß
+		return 1;
+	}
+	return fib(n - 1) + f(n - 2);
+}
+
+time complexity : O(2^n)
+
+int fib(n) {
+	int[] dp = new int[n];
+	dp[0] = 0;
+	dp[1] = 1;
+	for(int i = 2; i < n; ++i) {
+		dp[n] = dp[n - 1] + d[n - 2];
+	}
+	return dp[n]
+}
+
+time complexity : O(n)
+
+=============================================================================
+
+0/1 Knapsack Problem
+
+
+int maxValue(int[] vals, int[] weights, int w, int i) {
+	if (w == 0 || i == 0) {
+		return 0;
+	}
+
+	if (weights[i] > w) return maxValue(vals, weights, w, i - 1)
+
+	return max(vals[i] + maxValue(vals, weights, w - w[i], i - 1),
+		maxValue(vals, weights, w, i - 1))
+}
+
+w > w[i-1], max(v[i-1] + k[i-1][w-w[i]], k[i-1][w])
+
+		w 0  1   2  .... w1 ..    w2         ... w1+w2 ....  n
+		  0  0   0       0  ..    0          ...  0          0
+v1, w1    0  0   0  .... v1 ..    v1         ...  v1   ....  v1
+v2, w2	  0  0   0  .... v1 .. max(v2, v1)   ...  max(v2+v1, v1)
+....
+....
+....
+
+int maxValue(int[] vals, int[] weights[], int w) {
+    length = vals.length
+
+    dp[][]
+    for i in length:
+        for j in w:
+            if (i == 0 || j == 0)
+                dp[i][j] = 0
+            else if (j > weights[i - 1])
+                dp[i][j] = max(val[i - 1] + dp[i -  1][j - weights[i - 1]], dp[i - 1][j])
+            else
+                dp[i][j] = dp[i - 1][j]
+}

@@ -1,7 +1,7 @@
 import algorithms.*;
 import dataStructure.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
@@ -183,5 +183,17 @@ public class AlgorithmTest {
         KnapsackProblem kp = new KnapsackProblem();
         var max = kp.knapsackUsingDp(values, weights, 12);
         assertEquals(14, max);
+    }
+
+    @Test
+    public void should_getIndexes_when_RunKmp() {
+        String s = "abcabcabc";
+        String p = "abc";
+        KmpPattern kmp = new KmpPattern();
+        var r = kmp.kmpSearch(s, p);
+        assertEquals(3, r.size());
+        assertEquals(0, r.get(0));
+        assertEquals(3, r.get(1));
+        assertEquals(6, r.get(2));
     }
 }
