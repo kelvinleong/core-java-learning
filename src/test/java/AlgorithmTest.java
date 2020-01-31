@@ -140,16 +140,16 @@ public class AlgorithmTest {
     @Test
     public void should_getTrue_when_RunIsPowerOfTwo() {
         CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
-        Boolean r = commonAlgoUtils.isPowerOfTwo(2);
+        Boolean r = commonAlgoUtils.isNumPowerOfTwo(2);
         assertTrue(r);
 
-        r = commonAlgoUtils.isPowerOfTwo(4);
+        r = commonAlgoUtils.isNumPowerOfTwo(4);
         assertTrue(r);
 
-        r = commonAlgoUtils.isPowerOfTwo(8);
+        r = commonAlgoUtils.isNumPowerOfTwo(8);
         assertTrue(r);
 
-        r = commonAlgoUtils.isPowerOfTwo(16);
+        r = commonAlgoUtils.isNumPowerOfTwo(16);
         assertTrue(r);
     }
 
@@ -157,13 +157,13 @@ public class AlgorithmTest {
     public void should_getFalse_when_RunIsPowerOfTwo() {
         CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
 
-        var r = commonAlgoUtils.isPowerOfTwo(1);
+        var r = commonAlgoUtils.isNumPowerOfTwo(1);
         assertFalse(r);
 
-        r = commonAlgoUtils.isPowerOfTwo(5);
+        r = commonAlgoUtils.isNumPowerOfTwo(5);
         assertFalse(r);
 
-        r = commonAlgoUtils.isPowerOfTwo(10);
+        r = commonAlgoUtils.isNumPowerOfTwo(10);
         assertFalse(r);
     }
 
@@ -195,5 +195,43 @@ public class AlgorithmTest {
         assertEquals(0, r.get(0));
         assertEquals(3, r.get(1));
         assertEquals(6, r.get(2));
+    }
+
+    @Test
+    public void should_returnTrue_when_GivenValidPowerNumber() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+        assertTrue(commonAlgoUtils.isNumPowerOfN(5, 25));
+        assertTrue(commonAlgoUtils.isNumPowerOfN(3, 9));
+        assertTrue(commonAlgoUtils.isNumPowerOfN(12, 144));
+        assertTrue(commonAlgoUtils.isNumPowerOfN(19, 361));
+    }
+
+    @Test
+    public void should_returnFalse_when_GivenInvalidValidPowerNumber() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+        assertFalse(commonAlgoUtils.isNumPowerOfN(5, 26));
+        assertFalse(commonAlgoUtils.isNumPowerOfN(4, 9));
+        assertFalse(commonAlgoUtils.isNumPowerOfN(11, 144));
+        assertFalse(commonAlgoUtils.isNumPowerOfN(18, 361));
+    }
+
+    @Test
+    public void should_returnTrue_when_GivenRepeatedPatternString() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+        assertTrue(commonAlgoUtils.isRepeatedPattern("kelvin", "nkelvi"));
+        assertTrue(commonAlgoUtils.isRepeatedPattern("kelvin", "kelvin"));
+    }
+
+    @Test
+    public void should_returnFalse_when_GivenRepeatedPatternString() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+        assertFalse(commonAlgoUtils.isRepeatedPattern("aa", "bb"));
+    }
+
+    @Test
+    public void should_getTheOnlyNumber_when_GivenOnlyOneOfWhichOccursOddTimesInTheArray() {
+        CommonAlgoUtils commonAlgoUtils = new CommonAlgoUtils();
+        assertEquals(4, commonAlgoUtils.theOnlyNumberThatOccurOddTimes(new int[]{2, 2, 3, 3, 4}));
+        assertEquals(4, commonAlgoUtils.theOnlyNumberThatOccurOddTimes(new int[]{3, 3, 3, 3, 4}));
     }
 }
