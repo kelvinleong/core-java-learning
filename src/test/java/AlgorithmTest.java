@@ -234,4 +234,27 @@ public class AlgorithmTest {
         assertEquals(4, commonAlgoUtils.theOnlyNumberThatOccurOddTimes(new int[]{2, 2, 3, 3, 4}));
         assertEquals(4, commonAlgoUtils.theOnlyNumberThatOccurOddTimes(new int[]{3, 3, 3, 3, 4}));
     }
+
+    @Test
+    public void should_getShortestPath_when_GivenValidGraph() {
+        DijkstraAlgorithm dijkstraAlgorithm = new DijkstraAlgorithm();
+        dijkstraAlgorithm.edge("a", "b", 9);
+        dijkstraAlgorithm.edge("a", "c", 5);
+        dijkstraAlgorithm.edge("b", "e", 2);
+        dijkstraAlgorithm.edge("c", "b", 1);
+        dijkstraAlgorithm.edge("c", "d", 3);
+
+        dijkstraAlgorithm.solve("a");
+        assertEquals("b->c->a", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "b").get(0));
+        assertEquals("6", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "b").get(1));
+
+        assertEquals("c->a", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "c").get(0));
+        assertEquals("5", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "c").get(1));
+
+        assertEquals("d->c->a", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "d").get(0));
+        assertEquals("8", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "d").get(1));
+
+        assertEquals("e->b->c->a", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "e").get(0));
+        assertEquals("8", dijkstraAlgorithm.routeFromSrcToDstAndLength("a", "e").get(1));
+    }
 }
