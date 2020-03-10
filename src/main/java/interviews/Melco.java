@@ -37,11 +37,7 @@ public class Melco {
         } else if (j == B.length - 1) {
             return false;
         } else if ("X".equals(String.valueOf(B[i - 1].charAt(j + 1)))) {
-            if (i - 2 > 0 && j + 2 < B.length && "X".equals(String.valueOf(B[i - 2].charAt(j + 2)))) {
-                return false;
-            } else {
-                return true;
-            }
+            return i - 2 <= 0 || j + 2 >= B.length || !"X".equals(String.valueOf(B[i - 2].charAt(j + 2)));
         } else {
             return false;
         }
