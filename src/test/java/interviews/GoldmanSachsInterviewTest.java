@@ -1,3 +1,5 @@
+package interviews;
+
 import interviews.GoldmanSachs;
 import org.junit.Test;
 

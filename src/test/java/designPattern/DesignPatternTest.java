@@ -1,3 +1,5 @@
+package designPattern;
+
 import designPattern.structural.composite.*;
 import org.junit.jupiter.api.Test;
 

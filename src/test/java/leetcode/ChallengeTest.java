@@ -1,3 +1,5 @@
+package leetcode;
+
 import algorithms.EightQueens;
 import leetcodeChallenge.*;
 import org.junit.Test;

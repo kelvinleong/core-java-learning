@@ -1,3 +1,5 @@
+package algorithm;
+
 import algorithms.*;
 import dataStructure.*;
 

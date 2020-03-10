@@ -1,3 +1,5 @@
+package algorithm;
+
 import algorithms.RabinKarpRollingHash;
 import org.junit.jupiter.api.Test;
 

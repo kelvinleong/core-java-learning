@@ -1,3 +1,5 @@
+package algorithm;
+
 import algorithms.HeapSort;
 import algorithms.MergeSort;
 import org.junit.jupiter.api.Test;

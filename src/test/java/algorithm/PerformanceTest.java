@@ -1,3 +1,5 @@
+package algorithm;
+
 import algorithms.KnapsackProblem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

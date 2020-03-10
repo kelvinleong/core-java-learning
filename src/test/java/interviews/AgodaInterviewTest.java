@@ -1,3 +1,5 @@
+package interviews;
+
 import interviews.Agoda;
 import org.junit.jupiter.api.Test;
 
