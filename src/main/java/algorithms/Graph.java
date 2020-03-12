@@ -48,7 +48,7 @@ public class Graph {
         return visited;
     }
 
-    public Boolean reachable(int s, int d) {
+    public Boolean isReachable(int s, int d) {
         var visited = visited();
         var result = new AtomicBoolean(false);
         dfs(s, d, visited, result);

@@ -19,7 +19,7 @@ public class AlgorithmTest {
         g.addEdge(1, 3);
         g.addEdge(1, 4);
         g.addEdge(5, 1);
-        assertTrue(g.reachable(2, 5));
+        assertTrue(g.isReachable(2, 5));
     }
 
     @Test
