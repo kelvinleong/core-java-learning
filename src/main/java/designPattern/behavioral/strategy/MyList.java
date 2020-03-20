@@ -1,6 +1,6 @@
 package designPattern.behavioral.strategy;
 
-public interface MyList<T extends Object> {
+public interface MyList<T> {
     Boolean add(T e);
 
     T get(int i);
