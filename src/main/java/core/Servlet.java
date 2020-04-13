@@ -26,7 +26,8 @@ public class Servlet {
         register();
     }
 
-    public Object dispatcher(String request, String body) throws ClassNotFoundException, InvocationTargetException, IllegalAccessException, InstantiationException, NoSuchMethodException {
+    public Object dispatcher(String request, String body) throws ClassNotFoundException, InvocationTargetException,
+            IllegalAccessException, InstantiationException, NoSuchMethodException {
         String[] routes = request.split("/");
         var clazz = Class.forName(urlClass.get(request));
 
