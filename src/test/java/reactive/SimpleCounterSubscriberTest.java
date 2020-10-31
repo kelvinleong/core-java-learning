@@ -1,19 +1,19 @@
 package reactive;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.SubmissionPublisher;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleCounterSubscriberTest {
     private SubmissionPublisher<String> publisher;
     private SimpleCounterSubscriber subscriber;
 
-    @Before
+    @BeforeEach
     public void init() {
         this.publisher = new SubmissionPublisher<>();
         this.subscriber = new SimpleCounterSubscriber();

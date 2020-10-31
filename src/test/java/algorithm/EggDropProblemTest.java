@@ -1,9 +1,9 @@
 package algorithm;
 
 import algorithms.EggDropProblem;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EggDropProblemTest {
     @Test
@@ -20,21 +20,20 @@ public class EggDropProblemTest {
     public void Should_Get5_When_Given2EggsAnd9Floors() {
         EggDropProblem ep = new EggDropProblem();
         int result = ep.dpSolution(2, 9);
-        assertEquals(5, result);
+        assertEquals(4, result);
 
         result = ep.recursiveSolution(2, 9);
-        assertEquals(5, result);
+        assertEquals(4, result);
     }
-
 
     @Test
     public void Should_Get5_When_Given2EggsAnd10Floors() {
         EggDropProblem ep = new EggDropProblem();
         int result = ep.dpSolution(2, 9);
-        assertEquals(5, result);
+        assertEquals(4, result);
 
         result = ep.recursiveSolution(2, 9);
-        assertEquals(5, result);
+        assertEquals(4, result);
     }
 
     @Test

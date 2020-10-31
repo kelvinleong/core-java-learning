@@ -16,9 +16,9 @@ public class Reconnect {
 
         int prev = array.get(0);
         int sum = array.get(0);
-        for (int i = 0; i < array.size(); ++i) {
-            if (array.get(i) <= prev) ++prev;
-            else prev = array.get(i);
+        for (Integer integer : array) {
+            if (integer <= prev) ++prev;
+            else prev = integer;
             sum += prev;
         }
 

@@ -1,11 +1,11 @@
 package interviews;
 
-import interviews.GoldmanSachs;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.security.InvalidParameterException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GoldmanSachsInterviewTest {
     @Test
@@ -64,9 +64,11 @@ public class GoldmanSachsInterviewTest {
         assertEquals(2, r[1]);
     }
 
-    @Test(expected = InvalidParameterException.class)
+    @Test
     public void should_raiseException_when_givenZeroInDenominator() {
-        GoldmanSachs gs = new GoldmanSachs();
-        gs.addFractions(new int[] {-1, 0},  new int[] {-1, 7});
+        assertThrows(InvalidParameterException.class, () -> {
+            GoldmanSachs gs = new GoldmanSachs();
+            gs.addFractions(new int[] {-1, 0},  new int[] {-1, 7});
+        });
     }
 }

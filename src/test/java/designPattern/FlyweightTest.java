@@ -1,7 +1,7 @@
 package designPattern;
 
 import designPattern.structural.flyweight.Forest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.concurrent.TimeUnit;

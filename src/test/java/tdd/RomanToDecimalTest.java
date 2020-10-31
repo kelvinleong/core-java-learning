@@ -1,12 +1,12 @@
 package tdd;
 
-import org.junit.Test;
-import tdd.RomanToDecimal;
+import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RomanToDecimalTest {
     private static Map<String, BigDecimal> symbolValues;
@@ -20,10 +20,12 @@ public class RomanToDecimalTest {
                                 "M", new BigDecimal(1000));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void should_throwIllegalException_when_containingInvalidSymbols() {
-        RomanToDecimal r2d = new RomanToDecimal();
-        r2d.getDecimalFromRomanSymbols("ABMX");
+        assertThrows(IllegalArgumentException.class, () -> {
+            RomanToDecimal r2d = new RomanToDecimal();
+            r2d.getDecimalFromRomanSymbols("ABMX");
+        });
     }
 
     @Test
@@ -56,9 +58,11 @@ public class RomanToDecimalTest {
         assertEquals(new BigDecimal("4"), result);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void should_throwIllegalException_when_validSymbolsAreInCorrectOrders() {
-        RomanToDecimal r2d = new RomanToDecimal();
-        r2d.getDecimalFromRomanSymbols("CDM");
+        assertThrows(IllegalArgumentException.class, () -> {
+            RomanToDecimal r2d = new RomanToDecimal();
+            r2d.getDecimalFromRomanSymbols("CDM");
+        });
     }
 }

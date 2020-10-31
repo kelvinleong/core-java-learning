@@ -1,12 +1,13 @@
 package reactive;
 
 import algorithm.SortingTest;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.concurrent.SubmissionPublisher;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComplexStreamTest extends SortingTest {
     @Test
@@ -25,7 +26,7 @@ public class ComplexStreamTest extends SortingTest {
         while (!endSubscriber.isCompleted()) {
             TimeUnit.MILLISECONDS.sleep(100);
         }
-        Assert.assertEquals(10, endSubscriber.getList().size());
+        assertEquals(10, endSubscriber.getList().size());
         descSortingCheck(endSubscriber.getList().toArray(new Integer[10]));
     }
 }
