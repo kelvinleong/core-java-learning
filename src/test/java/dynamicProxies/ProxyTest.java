@@ -3,6 +3,8 @@ package dynamicProxies;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Proxy;
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -39,5 +41,16 @@ public class ProxyTest {
                 (proxy, method, args) -> method.invoke(realWorker, args));
         long count = dynamicWorker.increment();
         assertEquals(1L, count);
+    }
+
+    @Test
+    public void hashMapElapsedTimeHandler() {
+        Map mapProxy = (Map) Proxy.newProxyInstance(Map.class.getClassLoader(),
+                    new Class<?>[] {Map.class},
+                    new ElapsedTimeHandler(new HashMap<>())
+                );
+
+        mapProxy.put("hello", "test");
+        assertEquals("test", mapProxy.get("hello"));
     }
 }
