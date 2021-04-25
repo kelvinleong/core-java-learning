@@ -27,8 +27,16 @@
             <artifactId>commons-collections4</artifactId>
             <version>[4.1,)</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <lombok.version>1.18.12</lombok.version>
+    </properties>
     <build>
         <plugins>
             <plugin>
