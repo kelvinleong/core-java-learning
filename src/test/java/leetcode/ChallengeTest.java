@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ChallengeTest {
     @Test
-    public void should_CountBallons_when_RunBallonProblems() {
-        BallonProblems bp = new BallonProblems();
-        int result = bp.howManyBallons("ballonballonballonballonballonballonballonballonballonballon");
+    public void should_CountBalloons_when_RunBalloonProblems() {
+        BalloonProblems bp = new BalloonProblems();
+        int result = bp.howManyBalloons("balloonballoonballoonballoonballoonballoonballoonballoonballoonballoon");
         assertEquals(result, 10);
     }
 
