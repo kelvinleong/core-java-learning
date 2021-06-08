@@ -2,10 +2,10 @@ package maths;
 
 public class GreatestCommonDivisor {
 
-    public int educlid(int a, int b) {
+    public int euclid(int a, int b) {
         if (a == b) return a;
-        else if (a > b) return educlid(a -b, b);
-        else return educlid(a, b - a);
+        else if (a > b) return euclid(a -b, b);
+        else return euclid(a, b - a);
     }
 
     public int binarySearch(int a, int b) {
@@ -23,6 +23,6 @@ public class GreatestCommonDivisor {
             else b = (b - a) >> 1;
         }
 
-        return (int) (a * Math.pow(2.0, (double) d));
+        return (int) (a * Math.pow(2.0, d));
     }
 }
