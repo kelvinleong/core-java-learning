@@ -23,11 +23,19 @@ public class AlgorithmTest {
     }
 
     @Test
-    public void should_GetMaxValue_when_RunKadaneAlgo() {
+    public void should_GetMaxValue_1_when_RunKadaneAlgo() {
         KadaneAlgorithm kadaneAlgorithm = new KadaneAlgorithm();
         List<Integer> list = List.of(1, -2, 1);
-        Integer result = kadaneAlgorithm.findLargestContinguousSubArraySum(list);
+        Integer result = kadaneAlgorithm.findLargestContiguousSubArraySum(list);
         assertEquals(1, (int) result);
+    }
+
+    @Test
+    public void should_GetMaxValue_10_when_RunKadaneAlgo() {
+        KadaneAlgorithm kadaneAlgorithm = new KadaneAlgorithm();
+        List<Integer> list = List.of(9, 1, -1);
+        Integer result = kadaneAlgorithm.findLargestContiguousSubArraySum(list);
+        assertEquals(10, (int) result);
     }
 
     @Test
