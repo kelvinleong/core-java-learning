@@ -27,7 +27,7 @@ public class Projector<T> {
     }
 
     private void handleAggregationByPolicy(String fieldName, JsonNode target, JsonNode source, Policy policy) {
-        if (policy == Policy.REPLACE || !source.get(fieldName).isArray()) {
+        if (policy == Policy.REPLACE) {
             ((ObjectNode) target).set(fieldName, source.get(fieldName));
         } else if (policy == Policy.MERGE) {
             var s = source.get(fieldName);
@@ -39,6 +39,11 @@ public class Projector<T> {
             } else if (t.isNull()) {
                 ((ObjectNode) target).set(fieldName, s);
             } else {
+                if (!s.isArray()) {
+                    ((ObjectNode) target).set(fieldName, s);
+                    return;
+                }
+
                 var tSet = StreamSupport
                         .stream(Spliterators.spliteratorUnknownSize(t.elements(), Spliterator.ORDERED), false)
                         .collect(Collectors.toSet());
