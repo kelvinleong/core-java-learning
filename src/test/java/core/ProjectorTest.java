@@ -32,6 +32,14 @@ public class ProjectorTest {
         private MyObject object;
     }
 
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    private static class MyFinalObjects {
+        private List<MyFinalObject> objects;
+    }
+
     @Test
     public void testMergeGivenUniqueList() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException, JsonProcessingException {
         Projector<MyObject> aggregator = new Projector<>(MyObject.class);
@@ -98,5 +106,19 @@ public class ProjectorTest {
         assertEquals("calvin", r.getName());
         assertEquals(1, r.getObject().getVersion());
         assertEquals(List.of("bar", "bob", "foo"), r.getObject().getList());
+    }
+
+    @Test
+    public void testComplexListMerging() throws JsonProcessingException, NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Projector<MyFinalObjects> aggregator = new Projector<>(MyFinalObjects.class);
+        var obj1 = MyObject.builder().list(List.of("bar", "bob")).version(2).build();
+        var obj2 = MyObject.builder().list(List.of("bar", "foo")).version(1).build();
+        var finalObj1 = MyFinalObject.builder().name("kelvin").idNo(1).object(obj1).build();
+        var finalObj2 = MyFinalObject.builder().name("kelvin").idNo(1).object(obj2).build();
+        var arrays = List.of(MyFinalObjects.builder().objects(List.of(finalObj1)).build(),
+                MyFinalObjects.builder().objects(List.of(finalObj2)).build());
+
+        MyFinalObjects r = aggregator.aggregate(arrays, Projector.Policy.MERGE);
+        assertEquals(2, r.getObjects().size());
     }
 }
