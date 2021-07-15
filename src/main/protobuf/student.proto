@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "protobuf.messages";
+
+// package rotomer.simplevm.messages;
+
+message Student {
+    string id = 1;
+    string preset = 2;
+    HomeAddress address = 3;
+}
+
+message HomeAddress {
+    string address = 1;
+    string postCode = 2;
+}
