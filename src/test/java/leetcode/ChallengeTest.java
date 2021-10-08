@@ -4,8 +4,7 @@ import algorithms.EightQueens;
 import leetcodeChallenge.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ChallengeTest {
     @Test
@@ -164,7 +163,7 @@ public class ChallengeTest {
         var count = 0;
         int[] expected = {2, 0, 1};
 
-        assertTrue(head != null);
+        assertNotNull(head);
         while(head != null) {
             assertEquals(expected[count], head.getVal());
             head = head.getNext();

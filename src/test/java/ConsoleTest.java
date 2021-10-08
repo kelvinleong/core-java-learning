@@ -1,6 +1,3 @@
-
-
-
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -93,5 +90,12 @@ public class ConsoleTest {
         String a = null;
         var r = create(a);
         assertTrue(r.isEmpty());
+    }
+
+    @Test
+    public void testIntegerPool() {
+        Integer a = 130;
+        Integer b = Integer.valueOf(130);
+        assertFalse(a == b);
     }
 }
