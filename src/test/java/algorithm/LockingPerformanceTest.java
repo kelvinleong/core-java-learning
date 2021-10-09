@@ -1,5 +1,6 @@
 package algorithm;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class LockingPerformanceTest {
         lock = new ReentrantLock();
     }
 
+    @BeforeEach
     public void init() {
         bigList = new ArrayList<>();
         for(int i = 0; i < 1000000; i++) {
