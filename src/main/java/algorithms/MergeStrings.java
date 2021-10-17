@@ -10,7 +10,7 @@ public class MergeStrings {
         Map<String, Integer> occurrence = new TreeMap<>();
 
         for (String s: words) {
-            for(int i = 0; i < s.length(); i++) {
+            for (int i = 0; i < s.length(); i++) {
                 var c = Character.toString(s.charAt(i));
                 occurrence.compute(c, (k, v) -> (v == null) ? 1 : v + 1);
             }
