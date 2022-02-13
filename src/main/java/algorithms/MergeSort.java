@@ -20,7 +20,7 @@ public class MergeSort<T extends Number & Comparable<T>> extends Sort<T> {
         for (int i = 0; i < l2; ++i) R[i] = list[m + 1 + i];
 
         int i = 0, j = 0, k = l;
-        while(i < l1 && j < l2) {
+        while (i < l1 && j < l2) {
             if (L[i].compareTo(R[j]) < 0) {
                 list[k] = L[i];
                 i++;
@@ -32,14 +32,14 @@ public class MergeSort<T extends Number & Comparable<T>> extends Sort<T> {
         }
 
         // if remaining in L[]
-        while(i < l1) {
+        while (i < l1) {
             list[k] = L[i];
             ++i;
             ++k;
         }
 
         // if remaining in R[]
-        while(j < l2) {
+        while (j < l2) {
             list[k] = R[j];
             ++j;
             ++k;
