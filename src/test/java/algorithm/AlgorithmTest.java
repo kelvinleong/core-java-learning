@@ -85,20 +85,38 @@ public class AlgorithmTest {
     }
 
     @Test
-    public void should_ConstructSTAndQuery_when_BuildSegmentTree() {
+    public void should_ConstructSTAndQuery_when_RecursiveBuildSegmentTree() {
         SegmentTree<Integer> st = new SegmentTree<>(new Integer[]{1, 3, 2, 7, 9, 11});
-        st.buildSegmentTree();
-        Integer result = st.query(1, 5);
+        st.recursiveBuildSegmentTree();
+        Integer result = st.recursiveQuery(1, 5);
         assertEquals(result, 2);
 
         // update 1 -> 5 at index 0
-        st.update(0, 5);
-        result = st.query(0, 1);
+        st.recursiveUpdate(0, 5);
+        result = st.recursiveQuery(0, 1);
         assertEquals(result, 3);
 
         // update 2 -> 8 at index 2
-        st.update(2, 8);
-        result = st.query(2, 5);
+        st.recursiveUpdate(2, 8);
+        result = st.recursiveQuery(2, 5);
+        assertEquals(result, 7);
+    }
+
+    @Test
+    public void should_ConstructSTAndQuery_when_IterativeBuildSegmentTree() {
+        SegmentTree<Integer> st = new SegmentTree<>(new Integer[]{1, 3, 2, 7, 9, 11});
+        st.iterativeBuildTree();
+        Integer result = st.iterativeQuery(1, 5);
+        assertEquals(result, 2);
+
+        // update 1 -> 5 at index 0
+        st.iterativeUpdate(0, 5);
+        result = st.iterativeQuery(0, 1);
+        assertEquals(result, 3);
+
+        // update 2 -> 8 at index 2
+        st.iterativeUpdate(2, 8);
+        result = st.iterativeQuery(2, 5);
         assertEquals(result, 7);
     }
 
