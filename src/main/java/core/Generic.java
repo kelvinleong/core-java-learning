@@ -45,11 +45,13 @@ public class Generic {
      **/
     public void generic() {
         // PE principle
+        // or we say it's read-only
         List<? extends Animal> animals1 = getCats();
         animals1.forEach(a -> System.out.println(a.getName()));
         // animals1.add(new Cat("meow"));  <-- this line will cause compilation error
 
         // CS principle
+        // or we say it's write-only
         List<? super Cat> animals2 = getAnimals();
         animals2.add(new Cat("Siam Hairless"));
         // animals2.forEach(a -> System.out.println(a.getName())); <-- this line will cause compilation error

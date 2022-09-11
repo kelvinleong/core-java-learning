@@ -23,7 +23,7 @@ public class ConsoleTest {
                 }
             }
         }
-        return count > MAX ? MAX : count;
+        return Math.min(count, MAX);
     }
 
 
@@ -97,5 +97,86 @@ public class ConsoleTest {
         Integer a = 130;
         Integer b = Integer.valueOf(130);
         assertFalse(a == b);
+    }
+
+    private int compute(int[] coins, int amount, int index) {
+        int maxCount = amount / coins[index];
+        if (maxCount == 0) {
+            return -1;
+        }
+
+        int min = Integer.MAX_VALUE;
+        for (int i = maxCount; i > 0; --i) {
+            int remaining = amount - (coins[index] * i);
+            if (remaining == 0) {
+                min = Math.min(i, min);
+                break;
+            }
+
+            for (int j = index - 1; j >= 0; --j) {
+                int count = compute(coins, remaining, j);
+                if (count > -1 && count < Integer.MAX_VALUE) {
+                    min = Math.min(min, i + count);
+                    break;
+                }
+            }
+        }
+
+        return min;
+    }
+
+    public int coinChange(int[] coins, int amount) {
+        if (amount == 0) return 0;
+
+        Arrays.sort(coins);
+
+        for (int i = coins.length - 1; i >= 0; --i) {
+            int count = compute(coins, amount, i);
+            if (count > -1 && count < Integer.MAX_VALUE) {
+                return count;
+            }
+        }
+
+        return -1;
+    }
+
+    @Test
+    public void test() {
+        int r = coinChange(new int[]{411,412,413,414,415,416,417,418,419,420,421,422}, 9864);
+        assertEquals(24, r);
+    }
+
+    private void recursive(List<List<Integer>> rs, List<Integer> r, int n, int k, int target) {
+        if (r.size() == n && target != 0) {
+            return;
+        }
+
+        if (target == 0 && r.size() == n) {
+            rs.add(new ArrayList<>(r));
+            return;
+        }
+
+        for (int i = 1; i <= k; ++i) {
+            if (target >= i) {
+                r.add(i);
+                recursive(rs, r, n, k, target - i);
+                r.remove(r.size() - 1);
+            } else {
+                break;
+            }
+        }
+    }
+
+    public int numRollsToTarget(int n, int k, int target) {
+        List<List<Integer>> rs = new ArrayList<>();
+        List<Integer> r = new ArrayList<>();
+        recursive(rs, r, n, k, target);
+        return rs.size() % ((int) Math.pow(10, 9) + 7);
+    }
+
+    @Test
+    public void test2() {
+        int r = numRollsToTarget(30,30, 500);
+        assertEquals(222616187, r);
     }
 }
