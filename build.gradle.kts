@@ -4,9 +4,12 @@
  * This project uses @Incubating APIs which are subject to change.
  */
 
+
+import com.google.protobuf.gradle.*
 plugins {
-    java
-    `maven-publish`
+    id("java")
+    id("maven-publish")
+    id("com.google.protobuf") version "0.8.19"
 }
 
 repositories {
@@ -19,19 +22,35 @@ repositories {
 dependencies {
     implementation("com.google.code.gson:gson:2.8.6")
     implementation("org.apache.commons:commons-collections4:[4.1,)")
-    implementation("org.projectlombok:lombok:1.18.12")
+    implementation("org.projectlombok:lombok:1.18.24")
     implementation("com.fasterxml.jackson.core:jackson-core:2.11.1")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.11.1")
-    implementation("com.google.protobuf:protobuf-java:3.2.0")
+    implementation("com.google.protobuf:protobuf-java:3.10.0")
     implementation("com.google.protobuf:protobuf-java-util:3.2.0")
+    implementation("io.grpc:grpc-stub:1.15.1")
+    implementation("io.grpc:grpc-protobuf:1.15.1")
     testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
+    testCompileOnly("org.projectlombok:lombok:1.18.24")
+    testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
+
+    protobuf(files("src/main/protobuf"))
 }
 
 group = "core-java-learning"
 version = "1.0-SNAPSHOT"
 description = "samples"
 java.sourceCompatibility = JavaVersion.VERSION_11
+
+protobuf {
+    protoc {
+        // The artifact spec for the Protobuf Compiler
+        artifact = "com.google.protobuf:protoc:3.10.0"
+    }
+}
 
 publishing {
     publications.create<MavenPublication>("maven") {
