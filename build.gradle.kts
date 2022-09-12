@@ -6,6 +6,7 @@
 
 
 import com.google.protobuf.gradle.*
+
 plugins {
     id("java")
     id("maven-publish")
@@ -20,17 +21,17 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.8.6")
-    implementation("org.apache.commons:commons-collections4:[4.1,)")
+    implementation("com.google.code.gson:gson:2.9.0")
+    implementation("org.apache.commons:commons-collections4:4.4")
     implementation("org.projectlombok:lombok:1.18.24")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.11.1")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.11.1")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.11.1")
-    implementation("com.google.protobuf:protobuf-java:3.10.0")
-    implementation("com.google.protobuf:protobuf-java-util:3.2.0")
-    implementation("io.grpc:grpc-stub:1.15.1")
-    implementation("io.grpc:grpc-protobuf:1.15.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.4.2")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.13.4")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.4")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.4")
+    implementation("com.google.protobuf:protobuf-java:3.21.5")
+    implementation("com.google.protobuf:protobuf-java-util:3.21.5")
+    implementation("io.grpc:grpc-stub:1.49.0")
+    implementation("io.grpc:grpc-protobuf:1.49.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
 
     compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
@@ -38,6 +39,7 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 
     protobuf(files("src/main/protobuf"))
+    testProtobuf(files("src/main/protobuf"))
 }
 
 group = "core-java-learning"
