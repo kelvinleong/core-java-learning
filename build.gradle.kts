@@ -31,6 +31,7 @@ dependencies {
     implementation("com.google.protobuf:protobuf-java-util:3.21.5")
     implementation("io.grpc:grpc-stub:1.49.0")
     implementation("io.grpc:grpc-protobuf:1.49.0")
+    implementation("io.grpc:grpc-netty:1.49.0")
     testImplementation("org.junit.jupiter:junit-jupiter:5.9.0")
 
     compileOnly("org.projectlombok:lombok:1.18.24")
@@ -38,6 +39,7 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok:1.18.24")
     testAnnotationProcessor("org.projectlombok:lombok:1.18.24")
 
+    implementation("javax.annotation:javax.annotation-api:1.3.1")
     protobuf(files("src/main/protobuf"))
     testProtobuf(files("src/main/protobuf"))
 }
@@ -47,10 +49,35 @@ version = "1.0-SNAPSHOT"
 description = "samples"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
+sourceSets {
+    val main by getting { }
+    main.java.srcDirs("build/generated/source/proto/main/java")
+    main.java.srcDirs("build/generated/source/proto/main/grpc")
+}
+
 protobuf {
     protoc {
         // The artifact spec for the Protobuf Compiler
-        artifact = "com.google.protobuf:protoc:3.10.0"
+        artifact = "com.google.protobuf:protoc:3.21.5"
+    }
+    plugins {
+        // Optional: an artifact spec for a protoc plugin, with "grpc" as
+        // the identifier, which can be referred to in the "plugins"
+        // container of the "generateProtoTasks" closure.
+        id("grpc") {
+            artifact = "io.grpc:protoc-gen-grpc-java:1.15.1"
+        }
+    }
+    generateProtoTasks {
+        ofSourceSet("main").forEach {
+            it.plugins {
+                // Apply the "grpc" plugin whose spec is defined above, without
+                // options. Note the braces cannot be omitted, otherwise the
+                // plugin will not be added. This is because of the implicit way
+                // NamedDomainObjectContainer binds the methods.
+                id("grpc") { }
+            }
+        }
     }
 }
 

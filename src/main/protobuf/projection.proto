@@ -1,0 +1,21 @@
+syntax = "proto3";
+package grpc;
+
+service ProjectionService {
+    rpc getProjection(GetRequest) returns (GetResponse);
+}
+
+message GetRequest {
+    string name = 1;
+}
+
+message GetResponse {
+    string name = 1;
+    Data data = 2;
+}
+
+message Data {
+    string uuid = 1;
+    string name = 2;
+    string content = 3;
+}
