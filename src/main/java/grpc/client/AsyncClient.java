@@ -11,7 +11,6 @@ import static grpc.ProjectionServiceGrpc.getGetProjectionMethod;
 import static io.grpc.stub.ClientCalls.asyncServerStreamingCall;
 
 public class AsyncClient {
-
     private final String host;
     private final int port;
 
@@ -30,9 +29,7 @@ public class AsyncClient {
                 .build();
 
         // Create a new async stub
-        //var projectionServiceStub = ProjectionServiceGrpc.newStub(managedChannel);
         var projectionRequest = Projection.GetRequest.newBuilder().setName("p1").build();
-        //projectionServiceStub.getProjection(projectionRequest, new ProjectionCallback());
         var call = managedChannel.newCall(getGetProjectionMethod(), CallOptions.DEFAULT);
         asyncServerStreamingCall(call, projectionRequest, new ProjectionCallback());
         System.out.println("Finished call");
