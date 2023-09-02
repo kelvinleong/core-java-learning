@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -111,5 +112,18 @@ public class CoreTest {
             end = System.currentTimeMillis();
             System.out.println("completable futures time elapsed: " + (end - start) + "ms");
         }
+    }
+
+    @Test
+    public void shouldCatchExceptionBySupplier() {
+        String s = "kelvin";
+        Supplier<String> supplier = () -> {
+            if ("kelvin".equals(s)) {
+                throw new RuntimeException("runtime exception");
+            }
+            return s;
+        };
+
+        assertThrowsExactly(RuntimeException.class, supplier::get, "runtime exception");
     }
 }
