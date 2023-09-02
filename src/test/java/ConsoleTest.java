@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -179,4 +180,15 @@ public class ConsoleTest {
         int r = numRollsToTarget(30,30, 500);
         assertEquals(222616187, r);
     }
+
+    @Test
+    public void regexTest() {
+        var pattern = Pattern.compile("(\\{\\:[a-zA-Z]+[0-9]*\\:\\})+");
+        assertFalse(pattern.matcher("relative").find());
+        assertFalse(pattern.matcher("Yes").find());
+        assertFalse(pattern.matcher("100").find());
+        assertTrue(pattern.matcher("{:gearing1:}").find());
+        assertTrue(pattern.matcher("{:maturity:}").find());
+    }
+
 }
