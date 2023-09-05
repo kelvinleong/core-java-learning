@@ -126,4 +126,21 @@ public class CoreTest {
 
         assertThrowsExactly(RuntimeException.class, supplier::get, "runtime exception");
     }
+
+    @Test
+    public void testOptionalChain() {
+        List<String> list = new ArrayList<>();
+        var r = list.stream().filter(a -> a.startsWith("a")).findFirst().map(a -> "yes").orElse("no");
+        assertEquals("no", r);
+    }
+
+    @Test
+    public void testCompareNullAndUnbox() {
+        Double clientPrice = null;
+        assertThrows(NullPointerException.class, () -> {
+            if (Double.parseDouble("100") != clientPrice) {
+                System.out.println("Should not print anything!");
+            }
+        });
+    }
 }
